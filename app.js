@@ -12,7 +12,6 @@ var leaderRouter = require('./routes/leaderRouter');
 
 const mongoose = require('mongoose');
 
-// const url = 'mongobd://localhost:27017/confusion';
 const url = 'mongodb://127.0.0.1:27017/confusion';
 const connect = mongoose.connect(url);
 
@@ -36,7 +35,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/dishes', dishRouter);
 app.use('/promotions', promoRouter);
-app.use('./leaders', leaderRouter);
+app.use('/leaders', leaderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
