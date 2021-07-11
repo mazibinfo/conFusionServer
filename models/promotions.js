@@ -6,11 +6,11 @@ const Currency = mongoose.Types.Currency;
 const promoSchema = new Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     image: {
         type: String,
-        require: true
+        required: true
     },
     label: {
         type: String,
@@ -18,12 +18,12 @@ const promoSchema = new Schema({
     },
     price: {
         type: Currency,
-        require: true,
+        required: true,
         min: 0
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     featured: {
         type: Boolean,

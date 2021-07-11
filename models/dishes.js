@@ -8,15 +8,15 @@ const commentSchema = new Schema({
         type: Number,
         min: 1,
         max: 5,
-        require: true
+        required: true
     },
     comment: {
         type: String,
-        require: true
+        required: true
     },
     author: {
         type: String,
-        require: true
+        required: true
     }
 },{
     timestamps: true
@@ -25,20 +25,20 @@ const commentSchema = new Schema({
 const dishSchema = new Schema({
     name: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     image: {
         type: String,
-        require: true
+        required: true
     },
     category: {
         type: String,
-        require:true
+        required:true
     },
     label: {
         type: String,
@@ -46,7 +46,7 @@ const dishSchema = new Schema({
     },
     price: {
         type: Currency,
-        require: true,
+        required: true,
         min: 0
     },
     featured: {

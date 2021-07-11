@@ -4,27 +4,27 @@ const Schema = mongoose.Schema;
 const leaderSchema = new Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     image: {
         type: String,
-        require: true
+        required: true
     },
     designation: {
         type: String,
-        require: true
+        required: true
     },
     abbr: {
         type: String,
-        require: true
+        required: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     featured: {
         type: Boolean,
-        default: false
+        required: false
     }
 },{
     timestamps: true
