@@ -71,8 +71,27 @@ favouriteRouter.route('/')
 favouriteRouter.route('/:dishId')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
-    res.statusCode = 403;
-    res.end('GET operator is not supporte on /favorite/' + req.params.dishId)
+    Favorites.findOne({user : req.user._id})
+    .then((favorites) => {
+        if (!favorites) {
+            res.statusCode = 200;
+            res.setHeader('COntent-Type', 'application/json');
+            res.json({"exits" : false, "favorites" : favorites})
+        }
+        else {
+            if (favorites.dishes.indexOf(req.params.dishId) < 0) {
+                res.statusCode = 200;
+                res.setHeader('COntent-Type', 'application/json');
+                res.json({"exits" : false, "favorites" : favorites})               
+            }
+            else {
+                res.statusCode = 200;
+                res.setHeader('COntent-Type', 'application/json');
+                res.json({"exits" : true, "favorites" : favorites})
+            }
+        }
+    }, (err) => next(err))
+    .catch((err) => next(err))
 })
 .post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
     Favorites.findOne({user : req.user._id})
